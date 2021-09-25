@@ -22,7 +22,7 @@ class TodoList extends React.Component {
 
     displayTodos() {
         let todos = this.state.todos;
-        return todos.map((todo) => <li className='todo glass'>{todo}</li>)
+        return todos.map((todo) => <Todo content={todo}></Todo>)
     }
 
     render() {
@@ -35,18 +35,23 @@ class TodoList extends React.Component {
 }
 
 class Todo extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             content: this.props.content,
-            isDone: this.props.isDone,
+            isDone: false,
         }
     }
 
-    render(){
-        return(
+
+
+    render() {
+        return (
             <li className='todo glass'>
-                {this.state.content}
+                <span>
+                    {this.state.content}
+                </span>
+                <button className='imported-button'>Done</button>
             </li>
         )
     }
