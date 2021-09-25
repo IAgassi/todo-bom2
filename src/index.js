@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import react from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -30,6 +31,24 @@ class TodoList extends React.Component {
                 {this.displayTodos()}
             </ul>
         );
+    }
+}
+
+class Todo extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            content: this.props.content,
+            isDone: this.props.isDone,
+        }
+    }
+
+    render(){
+        return(
+            <li className='todo glass'>
+                {this.state.content}
+            </li>
+        )
     }
 }
 
