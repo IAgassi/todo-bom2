@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,11 +11,36 @@ function Navbar() {
     );
 }
 
+class TodoList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: ["test", "yo bro", "this is dope"],
+        }
+    }
+
+    displayTodos() {
+        let todos = this.state.todos;
+        return todos.map((todo) => <li className='todo glass'>{todo}</li>)
+    }
+
+    render() {
+        return (
+            <ul>
+                {this.displayTodos()}
+            </ul>
+        );
+    }
+}
+
 
 class Page extends React.Component {
     render() {
         return (
-            <Navbar></Navbar>
+            <div>
+                <Navbar></Navbar>
+                <TodoList></TodoList>
+            </div>
         );
     }
 }
